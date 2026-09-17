@@ -1,9 +1,9 @@
-package com.back.post.in.eventListener;
+package com.back.post.in;
 
-import com.back.member.app.usecase.MemberService;
+import com.back.member.app.MemberService;
 import com.back.member.domain.Member;
-import com.back.post.domain.event.CommentCreateEvent;
-import com.back.post.domain.event.PostCreateEvent;
+import com.back.global.event.CommentCreateEvent;
+import com.back.global.event.PostCreateEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

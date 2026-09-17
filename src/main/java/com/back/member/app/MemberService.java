@@ -1,4 +1,4 @@
-package com.back.member.app.usecase;
+package com.back.member.app;
 
 import com.back.member.domain.Member;
 import com.back.global.exception.DomainException;

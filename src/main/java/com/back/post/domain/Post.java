@@ -1,8 +1,8 @@
 package com.back.post.domain;
 
-import com.back.post.domain.dto.PostCommentDto;
+import com.back.global.dto.PostCommentDto;
 import com.back.global.GlobalConfig;
-import com.back.post.domain.event.CommentCreateEvent;
+import com.back.global.event.CommentCreateEvent;
 import com.back.global.entity.BaseIdAndTime;
 import com.back.member.domain.Member;
 import jakarta.persistence.Column;

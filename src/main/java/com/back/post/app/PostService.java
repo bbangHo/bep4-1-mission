@@ -1,9 +1,9 @@
-package com.back.post.app.usecase;
+package com.back.post.app;
 
 import com.back.member.domain.Member;
-import com.back.post.domain.dto.PostDto;
+import com.back.global.dto.PostDto;
 import com.back.post.domain.Post;
-import com.back.post.domain.event.PostCreateEvent;
+import com.back.global.event.PostCreateEvent;
 import com.back.out.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;

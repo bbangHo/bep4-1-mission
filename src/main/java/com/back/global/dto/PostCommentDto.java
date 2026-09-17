@@ -1,4 +1,4 @@
-package com.back.post.domain.dto;
+package com.back.global.dto;
 
 import com.back.post.domain.PostComment;
 import lombok.Getter;
