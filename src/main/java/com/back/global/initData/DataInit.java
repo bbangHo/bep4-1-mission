@@ -70,19 +70,12 @@ public class DataInit {
 
     @Transactional
     public void makeBasePostComments() {
-        RsData<Post> rs1 = postFacade.findById(1);
-        RsData<Post> rs2 = postFacade.findById(2);
-        RsData<Post> rs3 = postFacade.findById(3);
-        RsData<Post> rs4 = postFacade.findById(4);
-        RsData<Post> rs5 = postFacade.findById(5);
-        RsData<Post> rs6 = postFacade.findById(6);
-
-        Post post1 = rs1.getResult();
-        Post post2 = rs2.getResult();
-        Post post3 = rs3.getResult();
-        Post post4 = rs4.getResult();
-        Post post5 = rs5.getResult();
-        Post post6 = rs6.getResult();
+        Post post1 = postFacade.findById(1).get();
+        Post post2 = postFacade.findById(2).get();
+        Post post3 = postFacade.findById(3).get();
+        Post post4 = postFacade.findById(4).get();
+        Post post5 = postFacade.findById(5).get();
+        Post post6 = postFacade.findById(6).get();
 
         Member user1Member = memberFacade.findByUsername("user1").get();
         Member user2Member = memberFacade.findByUsername("user2").get();

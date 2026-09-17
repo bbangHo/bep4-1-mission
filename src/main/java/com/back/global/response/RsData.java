@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public class RsData<T> {
-    public RsCode code;
+    public String code;
     public String message;
     public T result;
 
-    public RsData (RsCode code, T result) {
+    public RsData (String code, String message, T result) {
         this.code = code;
-        this.message = code.name();
+        this.message = message;
         this.result = result;
     }
 }
