@@ -1,5 +1,7 @@
 package com.back.post.app;
 
+import com.back.global.response.RsCode;
+import com.back.global.response.RsData;
 import com.back.member.domain.Member;
 import com.back.global.dto.PostDto;
 import com.back.post.domain.Post;
@@ -24,12 +26,15 @@ public class PostFacade {
     }
 
     @Transactional
-    public Post write(Member author, String title, String content) {
-        return postWriteUseCase.write(author, title, content);
+    public RsData<Post> write(Member author, String title, String content) {
+        Post post = postWriteUseCase.write(author, title, content);
+
+        return new RsData<>(RsCode.POST_CREATE_SUCCESS, post);
     }
 
     @Transactional(readOnly = true)
-    public Optional<Post> findById(int id) {
-        return postRepository.findById(id);
+    public RsData<Post> findById(int id) {
+        Post post = postRepository.findById(id).get();
+        return new RsData<>(RsCode.POST_FETCHED_SUCCESS, post);
     }
 }

@@ -1,10 +1,10 @@
 package com.back.global.initData;
 
+import com.back.global.response.RsData;
 import com.back.member.app.MemberFacade;
 import com.back.member.app.MemberJoinUsecase;
 import com.back.member.domain.Member;
 import com.back.post.app.PostFacade;
-import com.back.post.app.PostWriteUseCase;
 import com.back.post.domain.Post;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -60,22 +60,29 @@ public class DataInit {
         Member user2Member = memberFacade.findByUsername("user2").get();
         Member user3Member = memberFacade.findByUsername("user3").get();
 
-        Post post1 = postFacade.write(user1Member, "제목1", "내용1");
-        Post post2 = postFacade.write(user1Member, "제목2", "내용2");
-        Post post3 = postFacade.write(user1Member, "제목3", "내용3");
-        Post post4 = postFacade.write(user2Member, "제목4", "내용4");
-        Post post5 = postFacade.write(user2Member, "제목5", "내용5");
-        Post post6 = postFacade.write(user3Member, "제목6", "내용6");
+        RsData<Post> post1 = postFacade.write(user1Member, "제목1", "내용1");
+        RsData<Post> post2 = postFacade.write(user1Member, "제목2", "내용2");
+        RsData<Post> post3 = postFacade.write(user1Member, "제목3", "내용3");
+        RsData<Post> post4 = postFacade.write(user2Member, "제목4", "내용4");
+        RsData<Post> post5 = postFacade.write(user2Member, "제목5", "내용5");
+        RsData<Post> post6 = postFacade.write(user3Member, "제목6", "내용6");
     }
 
     @Transactional
     public void makeBasePostComments() {
-        Post post1 = postFacade.findById(1).get();
-        Post post2 = postFacade.findById(2).get();
-        Post post3 = postFacade.findById(3).get();
-        Post post4 = postFacade.findById(4).get();
-        Post post5 = postFacade.findById(5).get();
-        Post post6 = postFacade.findById(6).get();
+        RsData<Post> rs1 = postFacade.findById(1);
+        RsData<Post> rs2 = postFacade.findById(2);
+        RsData<Post> rs3 = postFacade.findById(3);
+        RsData<Post> rs4 = postFacade.findById(4);
+        RsData<Post> rs5 = postFacade.findById(5);
+        RsData<Post> rs6 = postFacade.findById(6);
+
+        Post post1 = rs1.getResult();
+        Post post2 = rs2.getResult();
+        Post post3 = rs3.getResult();
+        Post post4 = rs4.getResult();
+        Post post5 = rs5.getResult();
+        Post post6 = rs6.getResult();
 
         Member user1Member = memberFacade.findByUsername("user1").get();
         Member user2Member = memberFacade.findByUsername("user2").get();
