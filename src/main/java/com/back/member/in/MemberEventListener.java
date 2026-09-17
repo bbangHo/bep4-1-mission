@@ -1,6 +1,6 @@
 package com.back.member.in;
 
-import com.back.member.app.MemberService;
+import com.back.member.app.MemberJoinUseCase;
 import com.back.member.domain.Member;
 import com.back.global.event.CommentCreateEvent;
 import com.back.global.event.PostCreateEvent;
@@ -18,12 +18,12 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 @Component
 @RequiredArgsConstructor
 public class MemberEventListener {
-    private final MemberService memberService;
+    private final MemberJoinUseCase memberJoinUseCase;
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(PostCreateEvent event) {
-        Member member = memberService.findById(event.getPostDto().getAuthorId()).get();
+        Member member = memberJoinUseCase.findById(event.getPostDto().getAuthorId()).get();
 
         member.increaseActivityScore(3);
     }
@@ -31,7 +31,7 @@ public class MemberEventListener {
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(CommentCreateEvent event) {
-        Member member = memberService.findById(event.getPostCommentDto().getAuthorId()).get();
+        Member member = memberJoinUseCase.findById(event.getPostCommentDto().getAuthorId()).get();
 
         member.increaseActivityScore(1);
     }

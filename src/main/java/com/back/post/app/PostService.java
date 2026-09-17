@@ -4,7 +4,7 @@ import com.back.member.domain.Member;
 import com.back.global.dto.PostDto;
 import com.back.post.domain.Post;
 import com.back.global.event.PostCreateEvent;
-import com.back.out.repository.PostRepository;
+import com.back.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
