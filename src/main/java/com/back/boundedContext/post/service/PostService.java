@@ -1,9 +1,12 @@
 package com.back.boundedContext.post.service;
 
 import com.back.boundedContext.member.entity.Member;
+import com.back.boundedContext.post.dto.PostDto;
 import com.back.boundedContext.post.entity.Post;
+import com.back.global.event.PostCreateEvent;
 import com.back.boundedContext.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,6 +15,7 @@ import java.util.Optional;
 @Service
 public class PostService {
     private final PostRepository postRepository;
+    private final ApplicationEventPublisher publisher;
 
     public long count() {
         return postRepository.count();
@@ -20,8 +24,8 @@ public class PostService {
     public Post write(Member author, String title, String content) {
         Post post = new Post(author, title, content);
 
-        // 게시글 작성시 활동점수 1점 추가
-        author.increaseActivityScore(3);
+        // 게시글 작성시 활동점수 3점 추가
+        publisher.publishEvent(new PostCreateEvent(new PostDto(post)));
 
         return postRepository.save(post);
     }

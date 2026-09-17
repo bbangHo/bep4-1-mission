@@ -3,6 +3,7 @@ package com.back.boundedContext.member.service;
 import com.back.boundedContext.member.entity.Member;
 import com.back.global.exception.DomainException;
 import com.back.boundedContext.member.repository.MemberRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class MemberService {
 
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
+    }
+
+    public Optional<Member> findById(Integer id) {
+        return memberRepository.findById(id);
     }
 
     public Member join(String username, String password, String nickname) {

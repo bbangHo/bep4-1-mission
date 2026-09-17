@@ -1,11 +1,16 @@
 package com.back.boundedContext.post.entity;
 
 import com.back.boundedContext.member.entity.Member;
+import com.back.boundedContext.post.dto.PostCommentDto;
+import com.back.global.GlobalConfig;
+import com.back.global.event.CommentCreateEvent;
+import com.back.global.event.PostCreateEvent;
 import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
@@ -18,6 +23,7 @@ import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
     private Member author;
@@ -41,7 +47,7 @@ public class Post extends BaseIdAndTime {
         comments.add(postComment);
 
         // 코멘트 작성시 활동점수 1점 추가
-        author.increaseActivityScore(1);
+        GlobalConfig.getEventPublisher().publish(new CommentCreateEvent(new PostCommentDto(postComment)));
 
         return postComment;
     }
