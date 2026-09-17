@@ -1,7 +1,7 @@
-package com.back.global.event;
+package com.back.domain.event;
 
 
-import com.back.boundedContext.post.dto.PostDto;
+import com.back.domain.dto.PostDto;
 
 public class PostCreateEvent {
     PostDto postDto;

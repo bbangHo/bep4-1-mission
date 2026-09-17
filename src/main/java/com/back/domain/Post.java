@@ -1,10 +1,8 @@
-package com.back.boundedContext.post.entity;
+package com.back.domain;
 
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.dto.PostCommentDto;
+import com.back.domain.dto.PostCommentDto;
 import com.back.global.GlobalConfig;
-import com.back.global.event.CommentCreateEvent;
-import com.back.global.event.PostCreateEvent;
+import com.back.domain.event.CommentCreateEvent;
 import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

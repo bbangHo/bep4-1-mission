@@ -1,6 +1,6 @@
-package com.back.boundedContext.post.dto;
+package com.back.domain.dto;
 
-import com.back.boundedContext.post.entity.Post;
+import com.back.domain.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
-package com.back.global.event;
+package com.back.domain.event;
 
 
-import com.back.boundedContext.post.dto.PostCommentDto;
+import com.back.domain.dto.PostCommentDto;
 
 public class CommentCreateEvent {
     PostCommentDto postCommentDto;

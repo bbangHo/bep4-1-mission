@@ -1,9 +1,9 @@
 package com.back.global.initData;
 
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.entity.Post;
-import com.back.boundedContext.member.service.MemberService;
-import com.back.boundedContext.post.service.PostService;
+import com.back.domain.Member;
+import com.back.domain.Post;
+import com.back.app.usecase.MemberService;
+import com.back.app.usecase.PostService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;

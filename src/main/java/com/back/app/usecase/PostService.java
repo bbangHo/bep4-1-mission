@@ -1,10 +1,10 @@
-package com.back.boundedContext.post.service;
+package com.back.app.usecase;
 
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.post.dto.PostDto;
-import com.back.boundedContext.post.entity.Post;
-import com.back.global.event.PostCreateEvent;
-import com.back.boundedContext.post.repository.PostRepository;
+import com.back.domain.Member;
+import com.back.domain.dto.PostDto;
+import com.back.domain.Post;
+import com.back.domain.event.PostCreateEvent;
+import com.back.out.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;

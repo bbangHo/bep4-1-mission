@@ -1,9 +1,8 @@
-package com.back.boundedContext.member.service;
+package com.back.app.usecase;
 
-import com.back.boundedContext.member.entity.Member;
+import com.back.domain.Member;
 import com.back.global.exception.DomainException;
-import com.back.boundedContext.member.repository.MemberRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.back.out.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
