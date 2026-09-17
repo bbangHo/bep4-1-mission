@@ -2,7 +2,7 @@ package com.back.global.initData;
 
 import com.back.global.response.RsData;
 import com.back.member.app.MemberFacade;
-import com.back.member.app.MemberJoinUsecase;
+import com.back.member.app.MemberJoinUseCase;
 import com.back.member.domain.Member;
 import com.back.post.app.PostFacade;
 import com.back.post.domain.Post;
@@ -16,13 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataInit {
     private final DataInit self;
     private final MemberFacade memberFacade;
-    private final MemberJoinUsecase memberJoinUseCase;
+    private final MemberJoinUseCase memberJoinUseCase;
     private final PostFacade postFacade;
 
     public DataInit(
             @Lazy DataInit self,
             MemberFacade memberQueryUseCase,
-            MemberJoinUsecase memberJoinUseCase,
+            MemberJoinUseCase memberJoinUseCase,
             PostFacade postFacade
     ) {
         this.self = self;
@@ -44,12 +44,12 @@ public class DataInit {
     public void makeBaseMembers() {
         if (memberFacade.count() > 0) return;
 
-        Member systemMember = memberJoinUseCase.join("system", "1234", "시스템");
-        Member holdingMember = memberJoinUseCase.join("holding", "1234", "홀딩");
-        Member adminMember = memberJoinUseCase.join("admin", "1234", "관리자");
-        Member user1Member = memberJoinUseCase.join("user1", "1234", "유저1");
-        Member user2Member = memberJoinUseCase.join("user2", "1234", "유저2");
-        Member user3Member = memberJoinUseCase.join("user3", "1234", "유저3");
+        RsData<Member> systemMember = memberJoinUseCase.join("system", "1234", "시스템");
+        RsData<Member> holdingMember = memberJoinUseCase.join("holding", "1234", "홀딩");
+        RsData<Member> adminMember = memberJoinUseCase.join("admin", "1234", "관리자");
+        RsData<Member> user1Member = memberJoinUseCase.join("user1", "1234", "유저1");
+        RsData<Member> user2Member = memberJoinUseCase.join("user2", "1234", "유저2");
+        RsData<Member> user3Member = memberJoinUseCase.join("user3", "1234", "유저3");
     }
 
     @Transactional

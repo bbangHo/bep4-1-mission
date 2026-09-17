@@ -1,8 +1,11 @@
 package com.back.member.domain;
 
+import org.springframework.stereotype.Component;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+@Component
 public class MemberPolicy {
     private static final Integer PASSWORD_CHANGE_DAYS = 90;
 
