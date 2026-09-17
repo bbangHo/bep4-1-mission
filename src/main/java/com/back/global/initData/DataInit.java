@@ -1,7 +1,7 @@
 package com.back.global.initData;
 
+import com.back.member.app.MemberFacade;
 import com.back.member.app.MemberJoinUseCase;
-import com.back.member.app.MemberQueryUseCase;
 import com.back.member.domain.Member;
 import com.back.post.domain.Post;
 import com.back.post.app.PostService;
@@ -14,18 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class DataInit {
     private final DataInit self;
-    private final MemberQueryUseCase memberQueryUseCase;
+    private final MemberFacade memberFacade;
     private final MemberJoinUseCase memberJoinUseCase;
     private final PostService postService;
 
     public DataInit(
             @Lazy DataInit self,
-            MemberQueryUseCase memberQueryUseCase,
+            MemberFacade memberQueryUseCase,
             MemberJoinUseCase memberJoinUseCase,
             PostService postService
     ) {
         this.self = self;
-        this.memberQueryUseCase = memberQueryUseCase;
+        this.memberFacade = memberQueryUseCase;
         this.memberJoinUseCase = memberJoinUseCase;
         this.postService = postService;
     }
@@ -41,7 +41,7 @@ public class DataInit {
 
     @Transactional
     public void makeBaseMembers() {
-        if (memberQueryUseCase.count() > 0) return;
+        if (memberFacade.count() > 0) return;
 
         Member systemMember = memberJoinUseCase.join("system", "1234", "시스템");
         Member holdingMember = memberJoinUseCase.join("holding", "1234", "홀딩");
@@ -55,9 +55,9 @@ public class DataInit {
     public void makeBasePosts() {
         if (postService.count() > 0) return;
 
-        Member user1Member = memberQueryUseCase.findByUsername("user1").get();
-        Member user2Member = memberQueryUseCase.findByUsername("user2").get();
-        Member user3Member = memberQueryUseCase.findByUsername("user3").get();
+        Member user1Member = memberFacade.findByUsername("user1").get();
+        Member user2Member = memberFacade.findByUsername("user2").get();
+        Member user3Member = memberFacade.findByUsername("user3").get();
 
         Post post1 = postService.write(user1Member, "제목1", "내용1");
         Post post2 = postService.write(user1Member, "제목2", "내용2");
@@ -76,9 +76,9 @@ public class DataInit {
         Post post5 = postService.findById(5).get();
         Post post6 = postService.findById(6).get();
 
-        Member user1Member = memberQueryUseCase.findByUsername("user1").get();
-        Member user2Member = memberQueryUseCase.findByUsername("user2").get();
-        Member user3Member = memberQueryUseCase.findByUsername("user3").get();
+        Member user1Member = memberFacade.findByUsername("user1").get();
+        Member user2Member = memberFacade.findByUsername("user2").get();
+        Member user3Member = memberFacade.findByUsername("user3").get();
 
         if (post1.hasComments()) return;
 

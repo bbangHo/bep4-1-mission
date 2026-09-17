@@ -8,6 +8,7 @@ import com.back.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ public class PostService {
         return postRepository.count();
     }
 
+    @Transactional
     public Post write(Member author, String title, String content) {
         Post post = new Post(author, title, content);
 
@@ -30,6 +32,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Post> findById(int id) {
         return postRepository.findById(id);
     }
