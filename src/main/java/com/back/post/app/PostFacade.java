@@ -23,9 +23,7 @@ public class PostFacade {
 
     @Transactional
     public RsData<Post> write(Member author, String title, String content) {
-        Post post = postWriteUseCase.write(author, title, content);
-
-        return new RsData<>("201-1", "%d번 글이 생성되었습니다.".formatted(post.getId()), post);
+        return postWriteUseCase.write(author, title, content);
     }
 
     @Transactional(readOnly = true)

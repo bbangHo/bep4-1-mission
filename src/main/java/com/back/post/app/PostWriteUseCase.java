@@ -3,7 +3,6 @@ package com.back.post.app;
 import com.back.global.dto.PostDto;
 import com.back.global.event.PostCreateEvent;
 import com.back.global.response.RsData;
-import com.back.member.app.MemberFacade;
 import com.back.member.domain.Member;
 import com.back.member.in.MemberEventListener;
 import com.back.member.out.MemberApiClient;
@@ -18,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PostWriteUseCase {
     private final PostRepository postRepository;
-    private final MemberFacade memberFacade;
+    private final MemberApiClient memberApiClient;
     private final ApplicationEventPublisher publisher;
 
     @Transactional
@@ -28,7 +27,7 @@ public class PostWriteUseCase {
         // 게시글 작성시 활동점수 3점 추가
         publisher.publishEvent(new PostCreateEvent(new PostDto(post)));
 
-        String randomSecureTip = memberFacade.getRandomSecureTip();
+        String randomSecureTip = memberApiClient.getRandomSecureTip();
 
         return new RsData<>(
                 "201-1",

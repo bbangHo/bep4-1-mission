@@ -37,7 +37,7 @@ public class MemberFacade {
         return memberRepository.findById(id);
     }
 
-    public String getRandomTip() {
+    public String getRandomSecureTip() {
         return "비밀번호 유효기간은 %d입니다.".formatted(memberPolicy.getNeedToChangePasswordDays());
     }
 }
