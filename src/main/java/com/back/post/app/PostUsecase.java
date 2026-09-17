@@ -1,9 +1,9 @@
 package com.back.post.app;
 
-import com.back.member.domain.Member;
 import com.back.global.dto.PostDto;
-import com.back.post.domain.Post;
 import com.back.global.event.PostCreateEvent;
+import com.back.member.domain.Member;
+import com.back.post.domain.Post;
 import com.back.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -14,12 +14,17 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class PostService {
+public class PostUsecase {
     private final PostRepository postRepository;
     private final ApplicationEventPublisher publisher;
 
     public long count() {
         return postRepository.count();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Post> findById(int id) {
+        return postRepository.findById(id);
     }
 
     @Transactional
@@ -30,10 +35,5 @@ public class PostService {
         publisher.publishEvent(new PostCreateEvent(new PostDto(post)));
 
         return postRepository.save(post);
-    }
-
-    @Transactional(readOnly = true)
-    public Optional<Post> findById(int id) {
-        return postRepository.findById(id);
     }
 }

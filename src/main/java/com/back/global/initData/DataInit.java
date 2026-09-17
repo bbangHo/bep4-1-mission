@@ -1,10 +1,11 @@
 package com.back.global.initData;
 
 import com.back.member.app.MemberFacade;
-import com.back.member.app.MemberJoinUseCase;
+import com.back.member.app.MemberJoinUsecase;
 import com.back.member.domain.Member;
+import com.back.post.app.PostUsecase;
 import com.back.post.domain.Post;
-import com.back.post.app.PostService;
+import com.back.post.app.PostFacade;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
@@ -15,19 +16,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataInit {
     private final DataInit self;
     private final MemberFacade memberFacade;
-    private final MemberJoinUseCase memberJoinUseCase;
-    private final PostService postService;
+    private final MemberJoinUsecase memberJoinUseCase;
+    private final PostUsecase postUsecase;
 
     public DataInit(
             @Lazy DataInit self,
             MemberFacade memberQueryUseCase,
-            MemberJoinUseCase memberJoinUseCase,
-            PostService postService
+            MemberJoinUsecase memberJoinUseCase,
+            PostUsecase postUsecase
     ) {
         this.self = self;
         this.memberFacade = memberQueryUseCase;
         this.memberJoinUseCase = memberJoinUseCase;
-        this.postService = postService;
+        this.postUsecase = postUsecase;
     }
 
     @Bean
@@ -53,28 +54,28 @@ public class DataInit {
 
     @Transactional
     public void makeBasePosts() {
-        if (postService.count() > 0) return;
+        if (postUsecase.count() > 0) return;
 
         Member user1Member = memberFacade.findByUsername("user1").get();
         Member user2Member = memberFacade.findByUsername("user2").get();
         Member user3Member = memberFacade.findByUsername("user3").get();
 
-        Post post1 = postService.write(user1Member, "제목1", "내용1");
-        Post post2 = postService.write(user1Member, "제목2", "내용2");
-        Post post3 = postService.write(user1Member, "제목3", "내용3");
-        Post post4 = postService.write(user2Member, "제목4", "내용4");
-        Post post5 = postService.write(user2Member, "제목5", "내용5");
-        Post post6 = postService.write(user3Member, "제목6", "내용6");
+        Post post1 = postUsecase.write(user1Member, "제목1", "내용1");
+        Post post2 = postUsecase.write(user1Member, "제목2", "내용2");
+        Post post3 = postUsecase.write(user1Member, "제목3", "내용3");
+        Post post4 = postUsecase.write(user2Member, "제목4", "내용4");
+        Post post5 = postUsecase.write(user2Member, "제목5", "내용5");
+        Post post6 = postUsecase.write(user3Member, "제목6", "내용6");
     }
 
     @Transactional
     public void makeBasePostComments() {
-        Post post1 = postService.findById(1).get();
-        Post post2 = postService.findById(2).get();
-        Post post3 = postService.findById(3).get();
-        Post post4 = postService.findById(4).get();
-        Post post5 = postService.findById(5).get();
-        Post post6 = postService.findById(6).get();
+        Post post1 = postUsecase.findById(1).get();
+        Post post2 = postUsecase.findById(2).get();
+        Post post3 = postUsecase.findById(3).get();
+        Post post4 = postUsecase.findById(4).get();
+        Post post5 = postUsecase.findById(5).get();
+        Post post6 = postUsecase.findById(6).get();
 
         Member user1Member = memberFacade.findByUsername("user1").get();
         Member user2Member = memberFacade.findByUsername("user2").get();
