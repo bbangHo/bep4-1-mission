@@ -1,6 +1,7 @@
-package com.back.domain;
+package com.back.post.domain;
 
 import com.back.global.entity.BaseIdAndTime;
+import com.back.member.domain.Member;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;

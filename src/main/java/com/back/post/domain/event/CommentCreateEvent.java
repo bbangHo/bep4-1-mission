@@ -1,7 +1,7 @@
-package com.back.domain.event;
+package com.back.post.domain.event;
 
 
-import com.back.domain.dto.PostCommentDto;
+import com.back.post.domain.dto.PostCommentDto;
 
 public class CommentCreateEvent {
     PostCommentDto postCommentDto;

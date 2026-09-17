@@ -1,6 +1,6 @@
-package com.back.out.repository;
+package com.back.post.out.repository;
 
-import com.back.domain.Post;
+import com.back.post.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {

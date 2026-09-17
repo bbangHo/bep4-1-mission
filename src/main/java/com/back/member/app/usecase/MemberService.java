@@ -1,6 +1,6 @@
-package com.back.app.usecase;
+package com.back.member.app.usecase;
 
-import com.back.domain.Member;
+import com.back.member.domain.Member;
 import com.back.global.exception.DomainException;
 import com.back.out.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

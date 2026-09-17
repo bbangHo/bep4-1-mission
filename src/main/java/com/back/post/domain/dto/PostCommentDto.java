@@ -1,6 +1,6 @@
-package com.back.domain.dto;
+package com.back.post.domain.dto;
 
-import com.back.domain.PostComment;
+import com.back.post.domain.PostComment;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

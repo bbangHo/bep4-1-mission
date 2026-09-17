@@ -1,7 +1,7 @@
-package com.back.domain.event;
+package com.back.post.domain.event;
 
 
-import com.back.domain.dto.PostDto;
+import com.back.post.domain.dto.PostDto;
 
 public class PostCreateEvent {
     PostDto postDto;

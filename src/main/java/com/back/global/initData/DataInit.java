@@ -1,9 +1,9 @@
 package com.back.global.initData;
 
-import com.back.domain.Member;
-import com.back.domain.Post;
-import com.back.app.usecase.MemberService;
-import com.back.app.usecase.PostService;
+import com.back.member.domain.Member;
+import com.back.post.domain.Post;
+import com.back.member.app.usecase.MemberService;
+import com.back.post.app.usecase.PostService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;

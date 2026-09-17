@@ -1,4 +1,4 @@
-package com.back.domain;
+package com.back.member.domain;
 
 import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.Column;
