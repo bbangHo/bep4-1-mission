@@ -14,18 +14,9 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class PostUsecase {
+public class PostWriteUseCase {
     private final PostRepository postRepository;
     private final ApplicationEventPublisher publisher;
-
-    public long count() {
-        return postRepository.count();
-    }
-
-    @Transactional(readOnly = true)
-    public Optional<Post> findById(int id) {
-        return postRepository.findById(id);
-    }
 
     @Transactional
     public Post write(Member author, String title, String content) {

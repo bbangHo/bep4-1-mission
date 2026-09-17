@@ -12,14 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class PostFacade {
     private final PostRepository postRepository;
-    private final ApplicationEventPublisher publisher;
+    private final PostWriteUseCase postWriteUseCase;
 
+    @Transactional(readOnly = true)
     public long count() {
         return postRepository.count();
+    }
+
+    @Transactional
+    public Post write(Member author, String title, String content) {
+        return postWriteUseCase.write(author, title, content);
     }
 
     @Transactional(readOnly = true)
