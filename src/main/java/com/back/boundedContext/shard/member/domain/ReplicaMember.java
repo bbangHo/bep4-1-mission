@@ -22,5 +22,4 @@ public class ReplicaMember extends BaseMember {
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
-
 }

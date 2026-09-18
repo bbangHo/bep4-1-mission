@@ -4,7 +4,6 @@ import com.back.boundedContext.shard.member.dto.MemberDto;
 import com.back.boundedContext.shard.post.dto.PostDto;
 import com.back.boundedContext.shard.post.event.PostCreatedEvent;
 import com.back.boundedContext.global.response.RsData;
-import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.shard.member.out.MemberApiClient;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
@@ -24,7 +23,7 @@ public class PostWriteUseCase {
     private final ApplicationEventPublisher publisher;
 
     @Transactional
-    public RsData<Post> write(Member author, String title, String content) {
+    public RsData<Post> write(PostMember author, String title, String content) {
         Post post = postRepository.save(new Post(author, title, content));
 
         // 게시글 작성시 활동점수 3점 추가

@@ -20,8 +20,11 @@ public class Member extends SourceMember {
     }
 
     public int increaseActivityScore(int amount) {
+        if (amount == 0) return getActivityScore();
+
         setActivityScore(getActivityScore() + amount);
         GlobalConfig.getEventPublisher().publish(new MemberModifiedEvent(new MemberDto(this)));
+
         return getActivityScore();
     }
 }

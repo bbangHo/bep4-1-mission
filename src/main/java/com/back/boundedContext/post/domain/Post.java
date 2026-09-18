@@ -4,7 +4,6 @@ import com.back.boundedContext.global.GlobalConfig;
 import com.back.boundedContext.shard.post.dto.PostCommentDto;
 import com.back.boundedContext.shard.post.event.CommentCreateEvent;
 import com.back.boundedContext.global.entity.BaseIdAndTime;
-import com.back.boundedContext.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,8 @@ import static jakarta.persistence.FetchType.LAZY;
 @NoArgsConstructor
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
-    private Member author;
+    private PostMember author;
+
     private String title;
 
     @Column(columnDefinition = "LONGTEXT")
@@ -32,13 +32,13 @@ public class Post extends BaseIdAndTime {
     @OneToMany(mappedBy = "post", cascade = {PERSIST, REMOVE}, orphanRemoval = true)
     private List<PostComment> comments = new ArrayList<>();
 
-    public Post(Member author, String title, String content) {
+    public Post(PostMember author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
     }
 
-    public PostComment addComment(Member author, String content) {
+    public PostComment addComment(PostMember author, String content) {
         PostComment postComment = new PostComment(this, author, content);
 
         comments.add(postComment);
