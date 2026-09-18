@@ -18,7 +18,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @NoArgsConstructor
-public class SourceMember extends BaseMember {
+public abstract class SourceMember extends BaseMember {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;

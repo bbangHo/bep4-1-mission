@@ -14,7 +14,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Setter(value = PROTECTED)
 @NoArgsConstructor
-public class BaseMember extends BaseEntity {
+public abstract class BaseMember extends BaseEntity {
     @Column(unique = true)
     private String username;
     private String password;

@@ -18,7 +18,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @MappedSuperclass
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class BaseManualIdAndTime {
+public abstract class BaseManualIdAndTime {
     @Id
     private int id;
 

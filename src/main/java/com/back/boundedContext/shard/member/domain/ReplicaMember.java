@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 @NoArgsConstructor
-public class ReplicaMember extends BaseMember {
+public abstract class ReplicaMember extends BaseMember {
     @Id
     private int id;
     private LocalDateTime createDate;
