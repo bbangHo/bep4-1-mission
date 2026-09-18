@@ -6,12 +6,14 @@ import com.back.member.app.MemberJoinUseCase;
 import com.back.member.domain.Member;
 import com.back.post.app.PostFacade;
 import com.back.post.domain.Post;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Component
 public class DataInit {
     private final DataInit self;
@@ -60,12 +62,23 @@ public class DataInit {
         Member user2Member = memberFacade.findByUsername("user2").get();
         Member user3Member = memberFacade.findByUsername("user3").get();
 
-        RsData<Post> post1 = postFacade.write(user1Member, "제목1", "내용1");
-        RsData<Post> post2 = postFacade.write(user1Member, "제목2", "내용2");
-        RsData<Post> post3 = postFacade.write(user1Member, "제목3", "내용3");
-        RsData<Post> post4 = postFacade.write(user2Member, "제목4", "내용4");
-        RsData<Post> post5 = postFacade.write(user2Member, "제목5", "내용5");
-        RsData<Post> post6 = postFacade.write(user3Member, "제목6", "내용6");
+        RsData<Post> post1RsData = postFacade.write(user1Member, "제목1", "내용1");
+        log.debug(post1RsData.getMessage());
+
+        RsData<Post> post2RsData = postFacade.write(user1Member, "제목2", "내용2");
+        log.debug(post2RsData.getMessage());
+
+        RsData<Post> post3RsData = postFacade.write(user1Member, "제목3", "내용3");
+        log.debug(post3RsData.getMessage());
+
+        RsData<Post> post4RsData = postFacade.write(user2Member, "제목4", "내용4");
+        log.debug(post4RsData.getMessage());
+
+        RsData<Post> post5RsData = postFacade.write(user2Member, "제목5", "내용5");
+        log.debug(post5RsData.getMessage());
+
+        RsData<Post> post6RsData = postFacade.write(user3Member, "제목6", "내용6");
+        log.debug(post6RsData.getMessage());
     }
 
     @Transactional
