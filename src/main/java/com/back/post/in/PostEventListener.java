@@ -2,6 +2,7 @@ package com.back.post.in;
 
 import com.back.shard.member.dto.MemberDto;
 import com.back.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.event.MemberModifiedEvent;
 import com.back.shard.post.event.PostCreatedEvent;
 import com.back.shard.member.out.MemberApiClient;
 import com.back.post.app.PostFacade;
@@ -13,6 +14,7 @@ import org.springframework.transaction.event.TransactionalEventListener;
 
 import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMIT;
+import static org.springframework.transaction.event.TransactionPhase.BEFORE_COMMIT;
 
 @Component
 @RequiredArgsConstructor
@@ -23,7 +25,14 @@ public class PostEventListener {
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MemberJoinedEvent event) {
+        log.info("MemberJoinedEvent");
         postFacade.syncMember(event.getMemberDto());
-        log.info("PostEventListener");
+    }
+
+    @TransactionalEventListener(phase = BEFORE_COMMIT)
+    @Transactional
+    public void handle(MemberModifiedEvent event) {
+        log.info("MemberModifiedEvent");
+        postFacade.syncMember(event.getMemberDto());
     }
 }

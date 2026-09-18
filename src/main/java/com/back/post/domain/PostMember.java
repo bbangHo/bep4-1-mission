@@ -14,9 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class PostMember extends ReplicaMember {
-    public PostMember(int id, String username, String password, String nickname, LocalDateTime createDate, LocalDateTime modifyDate) {
-        super(id, username, password, nickname, createDate, modifyDate);
+    public PostMember(int id, String username, String password, String nickname, LocalDateTime createDate, LocalDateTime modifyDate, int activityScore) {
+        super(id, username, password, nickname, createDate, modifyDate, activityScore);
     }
-
-//    publ
 }

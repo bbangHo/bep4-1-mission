@@ -2,9 +2,11 @@ package com.back.member.in;
 
 import com.back.member.app.MemberFacade;
 import com.back.member.domain.Member;
+import com.back.shard.member.event.MemberModifiedEvent;
 import com.back.shard.post.event.CommentCreateEvent;
 import com.back.shard.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;

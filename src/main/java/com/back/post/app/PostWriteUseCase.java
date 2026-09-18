@@ -49,7 +49,8 @@ public class PostWriteUseCase {
                         "",
                         memberDto.getNickname(),
                         memberDto.getCreateDate(),
-                        memberDto.getModifyDate()
+                        memberDto.getModifyDate(),
+                        memberDto.getActivityScore()
                 )
         );
 

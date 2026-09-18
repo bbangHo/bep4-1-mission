@@ -1,6 +1,9 @@
 package com.back.member.domain;
 
+import com.back.global.GlobalConfig;
 import com.back.shard.member.domain.SourceMember;
+import com.back.shard.member.dto.MemberDto;
+import com.back.shard.member.event.MemberModifiedEvent;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -18,6 +21,7 @@ public class Member extends SourceMember {
 
     public int increaseActivityScore(int amount) {
         setActivityScore(getActivityScore() + amount);
+        GlobalConfig.getEventPublisher().publish(new MemberModifiedEvent(new MemberDto(this)));
         return getActivityScore();
     }
 }
