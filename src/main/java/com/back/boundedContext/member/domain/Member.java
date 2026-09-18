@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static com.back.boundedContext.global.GlobalConfig.eventPublisher;
+
 
 @Getter
 @Entity
@@ -23,7 +25,7 @@ public class Member extends SourceMember {
         if (amount == 0) return getActivityScore();
 
         setActivityScore(getActivityScore() + amount);
-        GlobalConfig.getEventPublisher().publish(new MemberModifiedEvent(new MemberDto(this)));
+        eventPublisher.publish(new MemberModifiedEvent(new MemberDto(this)));
 
         return getActivityScore();
     }

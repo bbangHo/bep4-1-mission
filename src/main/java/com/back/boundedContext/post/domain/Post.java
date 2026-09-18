@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.back.boundedContext.global.GlobalConfig.eventPublisher;
 import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.CascadeType.REMOVE;
 import static jakarta.persistence.FetchType.LAZY;
@@ -44,7 +45,7 @@ public class Post extends BaseIdAndTime {
         comments.add(postComment);
 
         // 코멘트 작성시 활동점수 1점 추가
-        GlobalConfig.getEventPublisher().publish(new CommentCreateEvent(new PostCommentDto(postComment)));
+        eventPublisher.publish(new CommentCreateEvent(new PostCommentDto(postComment)));
 
         return postComment;
     }

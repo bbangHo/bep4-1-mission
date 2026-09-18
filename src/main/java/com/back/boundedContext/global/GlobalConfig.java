@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GlobalConfig {
     @Getter
-    private static EventPublisher eventPublisher;
+    public static EventPublisher eventPublisher;
 
     @Autowired
     public void setEventPublisher(EventPublisher eventPublisher) {
