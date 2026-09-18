@@ -1,6 +1,7 @@
 package com.back.boundedContext.cash.in;
 
 import com.back.boundedContext.cash.app.CashCreateWalletUseCase;
+import com.back.boundedContext.cash.app.CashFacade;
 import com.back.boundedContext.cash.app.CashSyncMemberUseCase;
 import com.back.boundedContext.cash.domain.CashMember;
 import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
@@ -16,20 +17,19 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 @Component
 @RequiredArgsConstructor
 public class CashEventListener {
-    private final CashCreateWalletUseCase cashCreateWalletUseCase;
-    private final CashSyncMemberUseCase cashSyncMemberUseCase;
+    private final CashFacade cashFacade;
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MemberJoinedEvent event) {
-        CashMember member = cashSyncMemberUseCase.syncMember(event.getMemberDto());
+        CashMember member = cashFacade.syncMember(event.getMemberDto());
 
-        cashCreateWalletUseCase.createWallet(member);
+        cashFacade.createWallet(member);
     }
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MemberModifiedEvent event) {
-        cashSyncMemberUseCase.syncMember(event.getMemberDto());
+        cashFacade.syncMember(event.getMemberDto());
     }
 }
