@@ -1,12 +1,12 @@
-package com.back.global.event;
+package com.back.shard.post.event;
 
 
 import com.back.global.dto.PostDto;
 
-public class PostCreateEvent {
+public class PostCreatedEvent {
     PostDto postDto;
 
-    public PostCreateEvent(PostDto post) {
+    public PostCreatedEvent(PostDto post) {
         this.postDto = post;
     }
 

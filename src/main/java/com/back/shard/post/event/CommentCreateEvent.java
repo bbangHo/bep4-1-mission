@@ -1,4 +1,4 @@
-package com.back.global.event;
+package com.back.shard.post.event;
 
 
 import com.back.global.dto.PostCommentDto;

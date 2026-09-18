@@ -1,8 +1,11 @@
-package com.back.member.out;
+package com.back.shard.member.out;
 
+import com.back.global.dto.MemberDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+@Slf4j
 @Service
 public class MemberApiClient {
     private final RestClient restClient = RestClient.builder()
@@ -14,5 +17,12 @@ public class MemberApiClient {
                 .uri("/members/randomSecureTip")
                 .retrieve()
                 .body(String.class);
+    }
+
+    public MemberDto getMember(Integer memberId) {
+        return restClient.get()
+                .uri("/members/" + memberId)
+                .retrieve()
+                .body(MemberDto.class);
     }
 }
