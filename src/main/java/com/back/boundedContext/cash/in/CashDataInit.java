@@ -35,16 +35,17 @@ public class CashDataInit {
 
     @Transactional
     public void makeBaseWallets() {
-        CashMember cashMember1 = cashFacade.findCashMemberByUsername("user1");
-        CashMember cashMember2 = cashFacade.findCashMemberByUsername("user2");
+        CashMember cashMember1 = cashFacade.findCashMemberByUsername("user1").get();
+        CashMember cashMember2 = cashFacade.findCashMemberByUsername("user2").get();
 
-        Wallet wallet1 = cashFacade.findWalletById(cashMember1.getId());
-        Wallet wallet2 = cashFacade.findWalletById(cashMember2.getId());
+        Wallet wallet1 = cashFacade.findWalletByHolder(cashMember1).get();
+        Wallet wallet2 = cashFacade.findWalletByHolder(cashMember2).get();
 
-        wallet1.credit(150000, CashLog.EventType.충전__무통장입금, "1", 1);
-        wallet1.credit(100000, CashLog.EventType.충전__무통장입금, "1", 1);
-        wallet1.credit(50000, CashLog.EventType.충전__무통장입금, "1", 1);
-        wallet2.credit(150000, CashLog.EventType.충전__무통장입금, "1", 1);
+        wallet1.credit(150000, CashLog.EventType.충전__무통장입금);
+        wallet1.credit(100000, CashLog.EventType.충전__무통장입금);
+        wallet1.credit(50000, CashLog.EventType.충전__무통장입금);
+
+        wallet2.credit(150000, CashLog.EventType.충전__무통장입금);
 
     }
 }

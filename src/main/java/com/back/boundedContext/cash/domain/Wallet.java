@@ -1,10 +1,10 @@
 package com.back.boundedContext.cash.domain;
 
+import com.back.boundedContext.global.entity.BaseEntity;
 import com.back.boundedContext.global.entity.BaseManualIdAndTime;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +37,26 @@ public class Wallet extends BaseManualIdAndTime {
         addCashLog(amount, eventType, relTypeCode, relId);
     }
 
+    public void credit(long amount, CashLog.EventType eventType, BaseEntity rel) {
+        credit(amount, eventType, rel.getModelTypeCode(), rel.getId());
+    }
+
+    public void credit(long amount, CashLog.EventType eventType) {
+        credit(amount, eventType, holder);
+    }
+
     public void debit(long amount, CashLog.EventType eventType, String relTypeCode, int relId){
         balance -= amount;
 
         addCashLog(amount, eventType, relTypeCode, relId);
+    }
+
+    public void debit(long amount, CashLog.EventType eventType, BaseEntity rel) {
+        debit(amount, eventType, rel.getModelTypeCode(), rel.getId());
+    }
+
+    public void debit(long amount, CashLog.EventType eventType) {
+        debit(amount, eventType, holder);
     }
 
     private CashLog addCashLog(long amount, CashLog.EventType eventType, String relTypeCode, int relId) {
