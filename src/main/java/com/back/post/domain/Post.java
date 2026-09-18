@@ -5,10 +5,7 @@ import com.back.global.GlobalConfig;
 import com.back.global.event.CommentCreateEvent;
 import com.back.global.entity.BaseIdAndTime;
 import com.back.member.domain.Member;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,8 +18,9 @@ import static jakarta.persistence.FetchType.LAZY;
 
 
 @Entity
-@NoArgsConstructor
 @Getter
+@Table(name = "POST_POST")
+@NoArgsConstructor
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
     private Member author;
