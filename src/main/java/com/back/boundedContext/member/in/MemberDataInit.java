@@ -1,8 +1,10 @@
 package com.back.boundedContext.member.in;
 
 import com.back.boundedContext.global.response.RsData;
+import com.back.boundedContext.cash.app.CashFacade;
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.app.MemberJoinUseCase;
+import com.back.boundedContext.cash.domain.CashMember;
 import com.back.boundedContext.member.domain.Member;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,15 +18,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberDataInit {
     private final MemberDataInit self;
     private final MemberFacade memberFacade;
+    private final CashFacade cashFacade;
     private final MemberJoinUseCase memberJoinUseCase;
 
     public MemberDataInit(
             @Lazy MemberDataInit self,
-            MemberFacade memberQueryUseCase,
+            MemberFacade memberFacade,
+            CashFacade cashFacade,
             MemberJoinUseCase memberJoinUseCase
     ) {
         this.self = self;
-        this.memberFacade = memberQueryUseCase;
+        this.memberFacade = memberFacade;
+        this.cashFacade = cashFacade;
         this.memberJoinUseCase = memberJoinUseCase;
     }
 

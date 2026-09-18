@@ -2,6 +2,8 @@ package com.back.boundedContext.member.in;
 
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
+import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
 import com.back.boundedContext.shard.post.event.CommentCreateEvent;
 import com.back.boundedContext.shard.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
