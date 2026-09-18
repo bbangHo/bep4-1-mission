@@ -2,14 +2,12 @@ package com.back.member.in;
 
 import com.back.member.app.MemberFacade;
 import com.back.member.domain.Member;
-import com.back.global.event.CommentCreateEvent;
-import com.back.global.event.PostCreateEvent;
+import com.back.shard.post.event.CommentCreateEvent;
+import com.back.shard.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
-import org.springframework.web.client.RestClient;
 
 import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMIT;
@@ -24,7 +22,7 @@ public class MemberEventListener {
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
-    public void handle(PostCreateEvent event) {
+    public void handle(PostCreatedEvent event) {
         Member member = memberFacade.findById(event.getPostDto().getAuthorId()).get();
 
         member.increaseActivityScore(3);

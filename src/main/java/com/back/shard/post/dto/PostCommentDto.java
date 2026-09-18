@@ -1,11 +1,10 @@
-package com.back.global.dto;
+package com.back.shard.post.dto;
 
 import com.back.post.domain.PostComment;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
-
 
 @Getter
 @RequiredArgsConstructor

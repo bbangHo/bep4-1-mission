@@ -1,7 +1,7 @@
 package com.back.shard.post.event;
 
 
-import com.back.global.dto.PostDto;
+import com.back.shard.post.dto.PostDto;
 
 public class PostCreatedEvent {
     PostDto postDto;

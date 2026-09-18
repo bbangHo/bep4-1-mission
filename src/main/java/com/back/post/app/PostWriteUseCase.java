@@ -1,12 +1,14 @@
 package com.back.post.app;
 
-import com.back.global.dto.PostDto;
-import com.back.global.event.PostCreateEvent;
+import com.back.shard.member.dto.MemberDto;
+import com.back.shard.post.dto.PostDto;
+import com.back.shard.post.event.PostCreatedEvent;
 import com.back.global.response.RsData;
 import com.back.member.domain.Member;
-import com.back.member.in.MemberEventListener;
-import com.back.member.out.MemberApiClient;
+import com.back.shard.member.out.MemberApiClient;
 import com.back.post.domain.Post;
+import com.back.post.domain.PostMember;
+import com.back.post.out.PostMemberRepository;
 import com.back.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PostWriteUseCase {
     private final PostRepository postRepository;
+    private final PostMemberRepository postMemberRepository;
     private final MemberApiClient memberApiClient;
     private final ApplicationEventPublisher publisher;
 
@@ -25,7 +28,7 @@ public class PostWriteUseCase {
         Post post = postRepository.save(new Post(author, title, content));
 
         // 게시글 작성시 활동점수 3점 추가
-        publisher.publishEvent(new PostCreateEvent(new PostDto(post)));
+        publisher.publishEvent(new PostCreatedEvent(new PostDto(post)));
 
         String randomSecureTip = memberApiClient.getRandomSecureTip();
 
@@ -34,6 +37,26 @@ public class PostWriteUseCase {
                 "%d번 글이 생성되었습니다. 보안 팁 : %s"
                         .formatted(post.getId(), randomSecureTip),
                 post
+        );
+    }
+
+    @Transactional
+    public RsData<PostMember> syncMember(MemberDto memberDto) {
+        PostMember postMember = postMemberRepository.save(
+                new PostMember(
+                        memberDto.getId(),
+                        memberDto.getUsername(),
+                        "",
+                        memberDto.getNickname(),
+                        memberDto.getCreateDate(),
+                        memberDto.getModifyDate()
+                )
+        );
+
+        return new RsData<>(
+                "201-2",
+                "%d번 PostMember가 복사되었습니다.",
+                postMember
         );
     }
 }

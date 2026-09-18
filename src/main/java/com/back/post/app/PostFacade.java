@@ -1,8 +1,10 @@
 package com.back.post.app;
 
+import com.back.shard.member.dto.MemberDto;
 import com.back.global.response.RsData;
 import com.back.member.domain.Member;
 import com.back.post.domain.Post;
+import com.back.post.domain.PostMember;
 import com.back.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,4 +32,10 @@ public class PostFacade {
     public Optional<Post> findById(int id) {
         return postRepository.findById(id);
     }
+
+    @Transactional
+    public RsData<PostMember> syncMember(MemberDto memberDto) {
+        return postWriteUseCase.syncMember(memberDto);
+    }
+
 }

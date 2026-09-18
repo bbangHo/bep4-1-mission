@@ -1,7 +1,11 @@
-package com.back.global.entity;
+package com.back.shard.member.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,7 +17,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
-public class BaseIdAndTime extends BaseEntity {
+@NoArgsConstructor
+public class SourceMember extends BaseMember {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;
@@ -23,4 +28,8 @@ public class BaseIdAndTime extends BaseEntity {
 
     @LastModifiedDate
     private LocalDateTime modifyDate;
+
+    public SourceMember(String username, String password, String nickname) {
+        super(username, password, nickname);
+    }
 }

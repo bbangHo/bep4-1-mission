@@ -1,4 +1,4 @@
-package com.back.global.dto;
+package com.back.shard.post.dto;
 
 import com.back.post.domain.Post;
 import lombok.AllArgsConstructor;

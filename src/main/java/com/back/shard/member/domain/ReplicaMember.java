@@ -1,0 +1,30 @@
+package com.back.shard.member.domain;
+
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@MappedSuperclass
+@Getter
+@NoArgsConstructor
+public class ReplicaMember extends BaseMember {
+    @Id
+    private int id;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
+
+    public ReplicaMember(String username, String password, String nickname) {
+        super(username, password, nickname);
+    }
+
+    public ReplicaMember(Integer id, String username, String password, String nickname, LocalDateTime createDate, LocalDateTime modifyDate) {
+        super(username, password, nickname);
+        this.id = id;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
+    }
+
+}

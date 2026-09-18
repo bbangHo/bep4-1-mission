@@ -1,7 +1,7 @@
 package com.back.shard.post.event;
 
 
-import com.back.global.dto.PostCommentDto;
+import com.back.shard.post.dto.PostCommentDto;
 
 public class CommentCreateEvent {
     PostCommentDto postCommentDto;

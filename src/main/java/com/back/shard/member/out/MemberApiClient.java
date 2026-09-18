@@ -1,6 +1,6 @@
 package com.back.shard.member.out;
 
-import com.back.global.dto.MemberDto;
+import com.back.shard.member.dto.MemberDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
