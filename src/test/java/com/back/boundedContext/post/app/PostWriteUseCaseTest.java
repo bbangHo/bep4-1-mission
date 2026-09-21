@@ -2,7 +2,6 @@ package com.back.boundedContext.post.app;
 
 import com.back.boundedContext.global.response.RsData;
 import com.back.boundedContext.post.domain.Post;
-import com.back.boundedContext.post.domain.PostComment;
 import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.boundedContext.post.out.PostRepository;
@@ -11,7 +10,6 @@ import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
 import com.back.boundedContext.shard.member.out.MemberApiClient;
 import com.back.boundedContext.shard.post.event.CommentCreateEvent;
 import com.back.boundedContext.shard.post.event.PostCreatedEvent;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +20,6 @@ import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
 import org.springframework.test.context.transaction.TestTransaction;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -94,7 +90,7 @@ class PostWriteUseCaseTest {
 
         // when
         // 댓글 추가
-        Post post = postRepository.findById(result.getResult().getId()).get();
+        Post post = postRepository.findById(result.getData().getId()).get();
         post.addComment(memberAfterWrite, "댓글1");
 
         // 이벤트 처리 및 db 커밋
@@ -164,7 +160,7 @@ class PostWriteUseCaseTest {
 
         // when
         // 댓글 추가 실패
-        Post post = postRepository.findById(result.getResult().getId()).get();
+        Post post = postRepository.findById(result.getData().getId()).get();
         assertThatThrownBy(()-> post.addComment(null, "댓글1"))
                 .isInstanceOf(NullPointerException.class);
 

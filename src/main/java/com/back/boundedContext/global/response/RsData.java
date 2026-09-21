@@ -6,11 +6,11 @@ import lombok.Getter;
 public class RsData<T> {
     public String code;
     public String message;
-    public T result;
+    public T data;
 
-    public RsData (String code, String message, T result) {
+    public RsData (String code, String message, T data) {
         this.code = code;
         this.message = message;
-        this.result = result;
+        this.data = data;
     }
 }
