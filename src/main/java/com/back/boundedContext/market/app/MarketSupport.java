@@ -5,6 +5,7 @@ import com.back.boundedContext.market.domain.MarketMember;
 import com.back.boundedContext.market.domain.Product;
 import com.back.boundedContext.market.out.CartRepository;
 import com.back.boundedContext.market.out.MarketMemberRepository;
+import com.back.boundedContext.market.out.OrderRepository;
 import com.back.boundedContext.market.out.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,12 @@ public class MarketSupport {
     private final MarketMemberRepository marketMemberRepository;
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
+    private final OrderRepository orderRepository;
+
+    @Transactional(readOnly = true)
+    public long ordersCount() {
+        return orderRepository.count();
+    }
 
     @Transactional(readOnly = true)
     public long productsCount() {
