@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity
-@Table(name = "MEMBER_MARKET_MEMBER")
+@Table(name = "MARKET_MARKET_MEMBER")
 @NoArgsConstructor
 public class MarketMember extends ReplicaMember {
     public MarketMember(int id, String username, String password, String nickname, LocalDateTime createDate, LocalDateTime modifyDate, int activityScore) {
