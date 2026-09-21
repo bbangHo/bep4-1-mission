@@ -19,7 +19,7 @@ public class CashSyncMemberUseCase {
 
     @Transactional
     public CashMember syncMember(MemberDto memberDto) {
-        boolean isNew = cashMemberRepository.existsById(memberDto.getId());
+        boolean isNew = !cashMemberRepository.existsById(memberDto.getId());
 
         CashMember member = cashMemberRepository.save(
                 new CashMember(
