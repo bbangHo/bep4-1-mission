@@ -1,18 +1,53 @@
 package com.back.boundedContext.market.app;
 
 import com.back.boundedContext.market.domain.MarketMember;
+import com.back.boundedContext.market.domain.Product;
 import com.back.boundedContext.shard.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MarketFacade {
     private final MarketUseCase memberUseCase;
+    private final MarketSupport marketSupport;
+    private final MarketCreateProductUseCase marketCreateProductUseCase;
+
+    @Transactional(readOnly = true)
+    public long productsCount() {
+        return marketSupport.productsCount();
+    }
+
+    @Transactional
+    public Optional<MarketMember> findMemberByUsername(String username) {
+        return marketSupport.findMemberByUsername(username);
+    }
 
     @Transactional
     public MarketMember syncMember(MemberDto member) {
         return memberUseCase.syncMember(member);
+    }
+
+    @Transactional
+    public Product createProduct(
+            MarketMember seller,
+                                 String sourceTypeCode,
+                                 int sourceId,
+                                 String name,
+                                 String description,
+                                 long price,
+                                 long salePrice) {
+        return marketCreateProductUseCase.createProduct(
+                seller,
+                sourceTypeCode,
+                sourceId,
+                name,
+                description,
+                price,
+                salePrice
+        );
     }
 }
