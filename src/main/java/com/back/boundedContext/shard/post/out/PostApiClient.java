@@ -1,0 +1,32 @@
+package com.back.boundedContext.shard.post.out;
+
+import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.shard.post.dto.PostDto;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
+
+import java.util.List;
+
+@Service
+public class PostApiClient {
+    private final RestClient restClient = RestClient.builder()
+            .baseUrl("http://localhost:8080/api/v1/post")
+            .build();
+
+    public List<PostDto> getPosts() {
+        return restClient.get()
+                .uri("/posts")
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
+
+    public PostDto getPost(Integer id) {
+        return restClient.get()
+                .uri("/posts/%d".formatted(id))
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
+}

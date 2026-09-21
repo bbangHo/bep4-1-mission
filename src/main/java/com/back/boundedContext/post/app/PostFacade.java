@@ -4,10 +4,12 @@ import com.back.boundedContext.shard.member.dto.MemberDto;
 import com.back.boundedContext.global.response.RsData;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
+import com.back.boundedContext.shard.post.dto.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,7 +24,6 @@ public class PostFacade {
         return postSupport.count();
     }
 
-
     @Transactional(readOnly = true)
     public Optional<Post> findById(int id) {
         return postSupport.findById(id);
@@ -31,6 +32,11 @@ public class PostFacade {
     @Transactional(readOnly = true)
     public Optional<PostMember> findMemberByUsername(String username) {
         return postSupport.findMemberByUsername(username);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Post> getPosts() {
+        return postSupport.getPosts();
     }
 
     @Transactional
