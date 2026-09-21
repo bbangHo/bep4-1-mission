@@ -48,7 +48,7 @@ public class Wallet extends BaseManualIdAndTime {
     public void debit(long amount, CashLog.EventType eventType, String relTypeCode, int relId){
         balance -= amount;
 
-        addCashLog(amount, eventType, relTypeCode, relId);
+        addCashLog(-amount, eventType, relTypeCode, relId);
     }
 
     public void debit(long amount, CashLog.EventType eventType, BaseEntity rel) {

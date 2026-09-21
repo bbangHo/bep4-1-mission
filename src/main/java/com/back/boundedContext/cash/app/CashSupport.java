@@ -1,6 +1,7 @@
 package com.back.boundedContext.cash.app;
 
 import com.back.boundedContext.cash.domain.CashMember;
+import com.back.boundedContext.cash.domain.CashPolicy;
 import com.back.boundedContext.cash.domain.Wallet;
 import com.back.boundedContext.cash.out.CashMemberRepository;
 import com.back.boundedContext.cash.out.WalletRepository;
@@ -25,5 +26,13 @@ public class CashSupport {
     @Transactional(readOnly = true)
     public Optional<Wallet> findWalletByHolder(CashMember cashMember) {
         return walletRepository.findByHolder(cashMember);
+    }
+
+    public Optional<Wallet> findWalletByHolderId(int holderId) {
+        return walletRepository.findByHolderId(holderId);
+    }
+
+    public Optional<Wallet> findHoldingWallet() {
+        return walletRepository.findByHolderId(CashPolicy.HOLDING_MEMBER_ID);
     }
 }

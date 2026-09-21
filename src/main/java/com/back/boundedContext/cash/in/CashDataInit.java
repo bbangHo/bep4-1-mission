@@ -44,7 +44,6 @@ public class CashDataInit {
         wallet1.credit(150000, CashLog.EventType.충전__무통장입금);
         wallet1.credit(100000, CashLog.EventType.충전__무통장입금);
         wallet1.credit(50000, CashLog.EventType.충전__무통장입금);
-
         wallet2.credit(150000, CashLog.EventType.충전__무통장입금);
 
     }

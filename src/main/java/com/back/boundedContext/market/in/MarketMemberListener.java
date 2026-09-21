@@ -1,6 +1,8 @@
 package com.back.boundedContext.market.in;
 
 import com.back.boundedContext.market.app.MarketFacade;
+import com.back.boundedContext.shard.cash.event.CashOrderPaymentFailedEvent;
+import com.back.boundedContext.shard.cash.event.CashOrderPaymentSucceededEvent;
 import com.back.boundedContext.shard.market.event.MarketMemberCreatedEvent;
 import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
 import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
@@ -15,23 +17,35 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 @Component
 @RequiredArgsConstructor
 public class MarketMemberListener {
-    private final MarketFacade memberFacade;
+    private final MarketFacade marketFacade;
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MemberJoinedEvent event) {
-        memberFacade.syncMember(event.getMemberDto());
+        marketFacade.syncMember(event.getMemberDto());
     }
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MemberModifiedEvent event) {
-        memberFacade.syncMember(event.getMemberDto());
+        marketFacade.syncMember(event.getMemberDto());
     }
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(MarketMemberCreatedEvent event) {
-        memberFacade.createCart(event.getMemberDto());
+        marketFacade.createCart(event.getMemberDto());
+    }
+
+    @TransactionalEventListener(phase = AFTER_COMMIT)
+    @Transactional(propagation = REQUIRES_NEW)
+    public void handle(CashOrderPaymentSucceededEvent event) {
+        marketFacade.handle(event);
+    }
+
+    @TransactionalEventListener(phase = AFTER_COMMIT)
+    @Transactional(propagation = REQUIRES_NEW)
+    public void handle(CashOrderPaymentFailedEvent event) {
+        marketFacade.handle(event);
     }
 }

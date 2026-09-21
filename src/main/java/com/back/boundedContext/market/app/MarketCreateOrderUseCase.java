@@ -24,7 +24,7 @@ public class MarketCreateOrderUseCase {
         return new RsData<>(
                 "201-1",
                 "%d번 주문이 생성되었습니다.".formatted(order.getId()),
-                order
+                _order
         );
     }
 }
