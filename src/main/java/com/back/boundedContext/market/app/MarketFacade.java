@@ -1,7 +1,9 @@
 package com.back.boundedContext.market.app;
 
+import com.back.boundedContext.market.domain.Cart;
 import com.back.boundedContext.market.domain.MarketMember;
 import com.back.boundedContext.market.domain.Product;
+import com.back.boundedContext.shard.market.dto.MarketMemberDto;
 import com.back.boundedContext.shard.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,10 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class MarketFacade {
-    private final MarketUseCase memberUseCase;
+    private final MarketSyncMemberUseCase memberUseCase;
     private final MarketSupport marketSupport;
     private final MarketCreateProductUseCase marketCreateProductUseCase;
+    private final MarketCreateCartUseCase marketCreateCartUseCase;
 
     @Transactional(readOnly = true)
     public long productsCount() {
@@ -30,6 +33,17 @@ public class MarketFacade {
     public MarketMember syncMember(MemberDto member) {
         return memberUseCase.syncMember(member);
     }
+
+    @Transactional(readOnly = true)
+    public Optional<Cart> findCartByBuyer(MarketMember member) {
+        return marketSupport.findCartByBuyer(member);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Product> findProductById(int id) {
+        return marketSupport.findProductById(id);
+    }
+
 
     @Transactional
     public Product createProduct(
@@ -49,5 +63,10 @@ public class MarketFacade {
                 price,
                 salePrice
         );
+    }
+
+    @Transactional
+    public Cart createCart(MarketMemberDto memberDto) {
+        return marketCreateCartUseCase.createCart(memberDto);
     }
 }
