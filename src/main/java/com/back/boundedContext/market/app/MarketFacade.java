@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class MarketMemberFacade {
-    private final MarketMemberUseCase memberUseCase;
+public class MarketFacade {
+    private final MarketUseCase memberUseCase;
 
     @Transactional
     public MarketMember syncMember(MemberDto member) {

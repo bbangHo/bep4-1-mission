@@ -1,6 +1,6 @@
 package com.back.boundedContext.market.in;
 
-import com.back.boundedContext.market.app.MarketMemberFacade;
+import com.back.boundedContext.market.app.MarketFacade;
 import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
 import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 @Component
 @RequiredArgsConstructor
 public class MarketMemberListener {
-    private final MarketMemberFacade memberFacade;
+    private final MarketFacade memberFacade;
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
