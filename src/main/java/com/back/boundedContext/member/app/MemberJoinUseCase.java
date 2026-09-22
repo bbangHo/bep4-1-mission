@@ -24,7 +24,7 @@ public class MemberJoinUseCase {
 
         Member member = memberRepository.save(new Member(username, password, nickname));
 
-        GlobalConfig.getEventPublisher().publish(new MemberJoinedEvent(new MemberDto(member)));
+        GlobalConfig.getEventPublisher().publish(new MemberJoinedEvent(member.toDto()));
 
         return new RsData<>("202-1", "%d번째 멤버가 가입했습니다.".formatted(member.getId()), member);
     }
