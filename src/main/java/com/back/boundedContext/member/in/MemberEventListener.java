@@ -2,8 +2,8 @@ package com.back.boundedContext.member.in;
 
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.domain.Member;
-import com.back.shard.post.event.CommentCreateEvent;
-import com.back.shard.post.event.PostCreatedEvent;
+import com.back.shared.post.event.CommentCreateEvent;
+import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

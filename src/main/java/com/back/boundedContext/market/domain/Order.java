@@ -1,8 +1,8 @@
 package com.back.boundedContext.market.domain;
 
 import com.back.global.entity.BaseIdAndTime;
-import com.back.shard.market.dto.OrderDto;
-import com.back.shard.market.event.MarketOrderPaymentRequestedEvent;
+import com.back.shared.market.dto.OrderDto;
+import com.back.shared.market.event.MarketOrderPaymentRequestedEvent;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

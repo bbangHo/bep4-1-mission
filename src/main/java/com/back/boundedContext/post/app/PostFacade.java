@@ -1,6 +1,6 @@
 package com.back.boundedContext.post.app;
 
-import com.back.shard.member.dto.MemberDto;
+import com.back.shared.member.dto.MemberDto;
 import com.back.global.response.RsData;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;

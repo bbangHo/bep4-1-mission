@@ -2,9 +2,9 @@ package com.back.boundedContext.cash.app;
 
 import com.back.boundedContext.cash.domain.CashMember;
 import com.back.boundedContext.cash.domain.Wallet;
-import com.back.shard.cash.dto.CashMemberDto;
-import com.back.shard.market.event.MarketOrderPaymentRequestedEvent;
-import com.back.shard.member.dto.MemberDto;
+import com.back.shared.cash.dto.CashMemberDto;
+import com.back.shared.market.event.MarketOrderPaymentRequestedEvent;
+import com.back.shared.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

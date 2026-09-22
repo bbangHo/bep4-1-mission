@@ -1,7 +1,7 @@
 package com.back.boundedContext.post.domain;
 
-import com.back.shard.post.dto.PostCommentDto;
-import com.back.shard.post.event.CommentCreateEvent;
+import com.back.shared.post.dto.PostCommentDto;
+import com.back.shared.post.event.CommentCreateEvent;
 import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.Getter;

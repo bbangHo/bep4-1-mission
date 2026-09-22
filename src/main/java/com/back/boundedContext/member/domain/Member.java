@@ -1,8 +1,8 @@
 package com.back.boundedContext.member.domain;
 
-import com.back.shard.member.domain.SourceMember;
-import com.back.shard.member.dto.MemberDto;
-import com.back.shard.member.event.MemberModifiedEvent;
+import com.back.shared.member.domain.SourceMember;
+import com.back.shared.member.dto.MemberDto;
+import com.back.shared.member.event.MemberModifiedEvent;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
