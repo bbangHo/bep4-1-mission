@@ -1,6 +1,7 @@
 package com.back.shared.market.dto;
 
 import com.back.boundedContext.market.domain.Order;
+import com.back.standard.HasModelTypeCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor
-public class OrderDto {
+public class OrderDto implements HasModelTypeCode  {
     private final int id;
     private final LocalDateTime createDate;
     private final LocalDateTime modifyDate;
@@ -18,4 +19,9 @@ public class OrderDto {
     private final long salePrice;
     private final LocalDateTime requestPaymentDate;
     private final LocalDateTime paymentDate;
+
+    @Override
+    public String getModelTypeCode() {
+        return "Order";
+    }
 }
