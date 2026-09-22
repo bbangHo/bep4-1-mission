@@ -1,8 +1,7 @@
 package com.back.boundedContext.market.domain;
 
 
-import com.back.boundedContext.global.entity.BaseIdAndTime;
-import com.back.boundedContext.global.entity.BaseManualIdAndTime;
+import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;

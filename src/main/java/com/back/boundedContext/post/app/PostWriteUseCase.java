@@ -1,10 +1,10 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.global.eventPublisher.EventPublisher;
-import com.back.boundedContext.shard.post.dto.PostDto;
-import com.back.boundedContext.shard.post.event.PostCreatedEvent;
-import com.back.boundedContext.global.response.RsData;
-import com.back.boundedContext.shard.member.out.MemberApiClient;
+import com.back.global.eventPublisher.EventPublisher;
+import com.back.shard.post.dto.PostDto;
+import com.back.shard.post.event.PostCreatedEvent;
+import com.back.global.response.RsData;
+import com.back.shard.member.out.MemberApiClient;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostRepository;

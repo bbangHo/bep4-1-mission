@@ -1,6 +1,6 @@
 package com.back.boundedContext.post.in;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.post.app.PostFacade;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;

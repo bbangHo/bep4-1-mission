@@ -1,7 +1,7 @@
 package com.back.boundedContext.post.in;
 
-import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
-import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
+import com.back.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.event.MemberModifiedEvent;
 import com.back.boundedContext.post.app.PostFacade;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

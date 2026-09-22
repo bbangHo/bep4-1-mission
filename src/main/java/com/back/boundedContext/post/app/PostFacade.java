@@ -1,10 +1,9 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.shard.member.dto.MemberDto;
-import com.back.boundedContext.global.response.RsData;
+import com.back.shard.member.dto.MemberDto;
+import com.back.global.response.RsData;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
-import com.back.boundedContext.shard.post.dto.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

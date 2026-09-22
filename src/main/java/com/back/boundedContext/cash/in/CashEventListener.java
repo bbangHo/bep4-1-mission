@@ -1,13 +1,10 @@
 package com.back.boundedContext.cash.in;
 
-import com.back.boundedContext.cash.app.CashCreateWalletUseCase;
 import com.back.boundedContext.cash.app.CashFacade;
-import com.back.boundedContext.cash.app.CashSyncMemberUseCase;
-import com.back.boundedContext.cash.domain.CashMember;
-import com.back.boundedContext.shard.cash.event.CashMemberCreatedEvent;
-import com.back.boundedContext.shard.market.event.MarketOrderPaymentRequestedEvent;
-import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
-import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
+import com.back.shard.cash.event.CashMemberCreatedEvent;
+import com.back.shard.market.event.MarketOrderPaymentRequestedEvent;
+import com.back.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.event.MemberModifiedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

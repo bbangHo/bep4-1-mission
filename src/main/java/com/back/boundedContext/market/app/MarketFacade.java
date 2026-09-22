@@ -1,14 +1,14 @@
 package com.back.boundedContext.market.app;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.market.domain.Cart;
 import com.back.boundedContext.market.domain.MarketMember;
 import com.back.boundedContext.market.domain.Order;
 import com.back.boundedContext.market.domain.Product;
-import com.back.boundedContext.shard.cash.event.CashOrderPaymentFailedEvent;
-import com.back.boundedContext.shard.cash.event.CashOrderPaymentSucceededEvent;
-import com.back.boundedContext.shard.market.dto.MarketMemberDto;
-import com.back.boundedContext.shard.member.dto.MemberDto;
+import com.back.shard.cash.event.CashOrderPaymentFailedEvent;
+import com.back.shard.cash.event.CashOrderPaymentSucceededEvent;
+import com.back.shard.market.dto.MarketMemberDto;
+import com.back.shard.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,15 +1,15 @@
 package com.back.boundedContext.post.app;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.boundedContext.post.out.PostRepository;
-import com.back.boundedContext.shard.member.dto.MemberDto;
-import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
-import com.back.boundedContext.shard.member.out.MemberApiClient;
-import com.back.boundedContext.shard.post.event.CommentCreateEvent;
-import com.back.boundedContext.shard.post.event.PostCreatedEvent;
+import com.back.shard.member.dto.MemberDto;
+import com.back.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.out.MemberApiClient;
+import com.back.shard.post.event.CommentCreateEvent;
+import com.back.shard.post.event.PostCreatedEvent;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

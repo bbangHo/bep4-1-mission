@@ -1,6 +1,6 @@
 package com.back.boundedContext.member.app;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

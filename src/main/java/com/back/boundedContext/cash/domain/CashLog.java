@@ -1,6 +1,6 @@
 package com.back.boundedContext.cash.domain;
 
-import com.back.boundedContext.global.entity.BaseIdAndTime;
+import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.back.boundedContext.market.app;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.market.domain.Cart;
 import com.back.boundedContext.market.domain.Order;
 import com.back.boundedContext.market.out.OrderRepository;

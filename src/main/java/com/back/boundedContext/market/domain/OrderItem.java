@@ -1,12 +1,9 @@
 package com.back.boundedContext.market.domain;
 
-import com.back.boundedContext.global.entity.BaseIdAndTime;
+import com.back.global.entity.BaseIdAndTime;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Getter
 @Entity

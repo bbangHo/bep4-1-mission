@@ -1,15 +1,14 @@
 package com.back.boundedContext.member.domain;
 
-import com.back.boundedContext.global.GlobalConfig;
-import com.back.boundedContext.shard.member.domain.SourceMember;
-import com.back.boundedContext.shard.member.dto.MemberDto;
-import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
+import com.back.shard.member.domain.SourceMember;
+import com.back.shard.member.dto.MemberDto;
+import com.back.shard.member.event.MemberModifiedEvent;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static com.back.boundedContext.global.GlobalConfig.eventPublisher;
+import static com.back.global.GlobalConfig.eventPublisher;
 
 
 @Getter

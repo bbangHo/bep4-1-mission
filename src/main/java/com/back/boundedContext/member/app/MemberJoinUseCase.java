@@ -1,12 +1,12 @@
 package com.back.boundedContext.member.app;
 
-import com.back.boundedContext.global.GlobalConfig;
-import com.back.boundedContext.shard.member.dto.MemberDto;
-import com.back.boundedContext.global.exception.DomainException;
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.GlobalConfig;
+import com.back.shard.member.dto.MemberDto;
+import com.back.global.exception.DomainException;
+import com.back.global.response.RsData;
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.out.MemberRepository;
-import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.event.MemberJoinedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,10 +1,9 @@
 package com.back.boundedContext.member.in;
 
-import com.back.boundedContext.global.response.RsData;
+import com.back.global.response.RsData;
 import com.back.boundedContext.cash.app.CashFacade;
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.app.MemberJoinUseCase;
-import com.back.boundedContext.cash.domain.CashMember;
 import com.back.boundedContext.member.domain.Member;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;

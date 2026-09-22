@@ -1,11 +1,11 @@
 package com.back.boundedContext.market.in;
 
 import com.back.boundedContext.market.app.MarketFacade;
-import com.back.boundedContext.shard.cash.event.CashOrderPaymentFailedEvent;
-import com.back.boundedContext.shard.cash.event.CashOrderPaymentSucceededEvent;
-import com.back.boundedContext.shard.market.event.MarketMemberCreatedEvent;
-import com.back.boundedContext.shard.member.event.MemberJoinedEvent;
-import com.back.boundedContext.shard.member.event.MemberModifiedEvent;
+import com.back.shard.cash.event.CashOrderPaymentFailedEvent;
+import com.back.shard.cash.event.CashOrderPaymentSucceededEvent;
+import com.back.shard.market.event.MarketMemberCreatedEvent;
+import com.back.shard.member.event.MemberJoinedEvent;
+import com.back.shard.member.event.MemberModifiedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
