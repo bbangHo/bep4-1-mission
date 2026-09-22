@@ -24,7 +24,7 @@ public class PostWriteUseCase {
         Post post = postRepository.save(new Post(author, title, content));
 
         // 게시글 작성시 활동점수 3점 추가
-        eventPublisher.publish(new PostCreatedEvent(new PostDto(post)));
+        eventPublisher.publish(new PostCreatedEvent(post.toDto()));
 
         String randomSecureTip = memberApiClient.getRandomSecureTip();
 

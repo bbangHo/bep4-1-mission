@@ -15,15 +15,4 @@ public class CashMemberDto {
     private final int activityScore;
     private final LocalDateTime createDate;
     private final LocalDateTime modifyDate;
-
-    public CashMemberDto(CashMember member) {
-        this(
-                member.getId(),
-                member.getUsername(),
-                member.getNickname(),
-                member.getActivityScore(),
-                member.getCreateDate(),
-                member.getModifyDate()
-        );
-    }
 }

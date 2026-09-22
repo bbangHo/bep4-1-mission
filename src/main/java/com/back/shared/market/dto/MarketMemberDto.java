@@ -15,15 +15,4 @@ public class MarketMemberDto {
     private final int activityScore;
     private final LocalDateTime createDate;
     private final LocalDateTime modifyDate;
-
-    public MarketMemberDto(MarketMember member) {
-        this(
-                member.getId(),
-                member.getUsername(),
-                member.getNickname(),
-                member.getActivityScore(),
-                member.getCreateDate(),
-                member.getModifyDate()
-        );
-    }
 }
