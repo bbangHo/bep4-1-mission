@@ -1,6 +1,5 @@
 package com.back.shared.market.dto;
 
-import com.back.boundedContext.market.domain.Order;
 import com.back.standard.HasModelTypeCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

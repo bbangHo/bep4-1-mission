@@ -2,9 +2,11 @@ package com.back.boundedContext.market.in;
 
 import com.back.boundedContext.market.app.MarketFacade;
 import com.back.boundedContext.market.domain.Order;
+import com.back.boundedContext.market.domain.OrderItem;
 import com.back.global.exception.DomainException;
 import com.back.global.response.RsData;
 import com.back.shared.cash.out.CashApiClient;
+import com.back.shared.market.dto.OrderItemDto;
 import com.back.shared.market.out.TossPaymentsService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -13,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/market/orders")
 @RequiredArgsConstructor
@@ -20,6 +24,18 @@ public class ApiV1OrderController {
     private final MarketFacade marketFacade;
     private final TossPaymentsService tossPaymentsService;
     private final CashApiClient cashApiClient;
+
+    @GetMapping("/{id}/items")
+    @Transactional(readOnly = true)
+    public List<OrderItemDto> getItems(@PathVariable int id) {
+        return marketFacade
+                .findOrderById(id)
+                .get()
+                .getItems()
+                .stream()
+                .map(OrderItem::toDto)
+                .toList();
+    }
 
     // 요청에 대한 검증 객체
     public record ConfirmPaymentByTossPaymentsReqBody(
