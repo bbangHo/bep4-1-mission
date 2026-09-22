@@ -19,7 +19,6 @@ import static jakarta.persistence.CascadeType.REMOVE;
 @Entity
 @Table(name = "MARKET_ORDER")
 @NoArgsConstructor
-@Slf4j
 public class Order extends BaseIdAndTime {
     @ManyToOne(fetch = FetchType.LAZY)
     private MarketMember buyer;
@@ -29,6 +28,7 @@ public class Order extends BaseIdAndTime {
 
     private LocalDateTime requestPaymentDate;
     private LocalDateTime paymentDate;
+    private LocalDateTime cancelDate;
 
     @OneToMany(mappedBy = "order", cascade = {PERSIST, REMOVE}, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
@@ -62,16 +62,23 @@ public class Order extends BaseIdAndTime {
 
     public void completePayment() {
         paymentDate = LocalDateTime.now();
-        log.info("completePayment: " + paymentDate);
     }
 
     public void requestPayment(long pgPaymentAmount) {
         requestPaymentDate = LocalDateTime.now();
-        log.info("requestPayment: " + requestPaymentDate);
         publishEvent(new MarketOrderPaymentRequestedEvent(new OrderDto(this), pgPaymentAmount));
     }
 
     public void cancelRequestPayment() {
         requestPaymentDate = null;
+    }
+
+    public boolean isCanceled() {
+        return cancelDate != null;
+    }
+
+    // 하나라도 남아있으면 '진행중'인 결제
+    public boolean isPaymentInProgress() {
+        return requestPaymentDate != null && paymentDate == null && cancelDate == null;
     }
 }

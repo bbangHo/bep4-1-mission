@@ -13,4 +13,9 @@ public class RsData<T> {
         this.message = message;
         this.data = data;
     }
+
+    public RsData (String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 }

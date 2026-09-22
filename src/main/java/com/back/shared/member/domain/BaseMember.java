@@ -1,4 +1,4 @@
-package com.back.shard.member.domain;
+package com.back.shared.member.domain;
 
 import com.back.global.entity.BaseEntity;
 import jakarta.persistence.Column;

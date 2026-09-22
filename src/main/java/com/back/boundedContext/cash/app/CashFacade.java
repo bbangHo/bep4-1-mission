@@ -44,4 +44,9 @@ public class CashFacade {
         return cashCreateWalletUseCase.createWallet(cashMemberDto);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Wallet> findWalletByHolderId(int holderId) {
+        return cashSupport.findWalletByHolderId(holderId);
+    }
+
 }
