@@ -15,15 +15,4 @@ public class MemberDto {
     private final int activityScore;
     private final LocalDateTime createDate;
     private final LocalDateTime modifyDate;
-
-    public MemberDto(Member member) {
-        this(
-                member.getId(),
-                member.getUsername(),
-                member.getNickname(),
-                member.getActivityScore(),
-                member.getCreateDate(),
-                member.getModifyDate()
-        );
-    }
 }
