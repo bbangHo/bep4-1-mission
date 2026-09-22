@@ -47,7 +47,7 @@ public class MarketDataInit {
     public void makeBaseProducts() {
         if (marketFacade.productsCount() > 0) return;
 
-        List<PostDto> posts = postApiClient.getPosts();
+        List<PostDto> posts = postApiClient.getItems();
 
         PostDto post1 = posts.get(5);
         PostDto post2 = posts.get(4);
