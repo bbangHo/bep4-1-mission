@@ -17,9 +17,15 @@ public class PayoutCreatePayoutUseCase {
     private final PayoutRepository payoutRepository;
     private final PayoutMemberRepository payoutMemberRepository;
 
-    @Transactional
-    public Payout createPayout(PayoutMemberDto payee) {
-        PayoutMember _payee = payoutMemberRepository.findById(payee.getId()).get();
-        return payoutRepository.save(new Payout(_payee));
+    public Payout createPayout(int payeeId) {
+        PayoutMember _payee = payoutMemberRepository.getReferenceById(payeeId);
+
+        Payout payout = payoutRepository.save(
+                new Payout(
+                        _payee
+                )
+        );
+
+        return payout;
     }
 }

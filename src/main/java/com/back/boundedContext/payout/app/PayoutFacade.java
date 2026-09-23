@@ -1,5 +1,6 @@
 package com.back.boundedContext.payout.app;
 
+import com.back.boundedContext.payout.domain.Payout;
 import com.back.boundedContext.payout.domain.PayoutCandidateItem;
 import com.back.boundedContext.payout.domain.PayoutMember;
 import com.back.global.response.RsData;
@@ -19,6 +20,7 @@ public class PayoutFacade {
     private final PayoutCollectPayoutItemsMoreUseCase payoutCollectPayoutItemsMoreUseCase;
     private final PayoutCreatePayoutUseCase payoutCreatePayoutUseCase;
     private final PayoutSyncMemberUseCase payoutSyncMemberUseCase;
+    private final PayoutCompletePayoutsMoreUseCase payoutCompletePayoutsMoreUseCase;
     private final PayoutSupport payoutSupport;
 
     @Transactional
@@ -27,8 +29,8 @@ public class PayoutFacade {
     }
 
     @Transactional
-    public void createPayout(PayoutMemberDto member) {
-        payoutCreatePayoutUseCase.createPayout(member);
+    public Payout createPayout(int payeeId) {
+        return payoutCreatePayoutUseCase.createPayout(payeeId);
     }
 
     @Transactional
@@ -44,6 +46,11 @@ public class PayoutFacade {
     @Transactional(readOnly = true)
     public List<PayoutCandidateItem> findPayoutCandidateItems() {
         return payoutSupport.findPayoutCandidateItems();
+    }
+
+    @Transactional
+    public RsData<Integer> completePayoutsMore(int limit) {
+        return payoutCompletePayoutsMoreUseCase.completePayoutsMore(limit);
     }
 
 }

@@ -6,6 +6,7 @@ import com.back.shared.cash.dto.CashMemberDto;
 import com.back.shared.market.dto.OrderDto;
 import com.back.shared.market.event.MarketOrderPaymentRequestedEvent;
 import com.back.shared.member.dto.MemberDto;
+import com.back.shared.payout.dto.PayoutDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ public class CashFacade {
     private final CashCreateWalletUseCase cashCreateWalletUseCase;
     private final CashSyncMemberUseCase cashSyncMemberUseCase;
     private final CashCompleteOrderPaymentUseCase cashCompleteOrderPaymentUseCase;
+    private final CashCompletePayoutUseCase cashCompletePayoutUseCase;
 
     @Transactional
     public void completeOrderPayment(OrderDto order, long pgPaymentAmount) {
@@ -50,4 +52,8 @@ public class CashFacade {
         return cashSupport.findWalletByHolderId(holderId);
     }
 
+    @Transactional
+    public void completePayout(PayoutDto payout) {
+        cashCompletePayoutUseCase.completePayout(payout);
+    }
 }

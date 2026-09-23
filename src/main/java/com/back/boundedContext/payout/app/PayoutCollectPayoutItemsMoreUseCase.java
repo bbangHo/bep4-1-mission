@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class PayoutCollectPayoutItemsMoreUseCase {
-    private final PayoutCandidateItemRepository payoutCandidateItemRepository;
     private final PayoutRepository payoutRepository;
+    private final PayoutCandidateItemRepository payoutCandidateItemRepository;
 
     public RsData<Integer> collectPayoutItemsMore(int limit) {
         List<PayoutCandidateItem> payoutReadyCandidateItems = findPayoutReadyCandidateItems(limit);
