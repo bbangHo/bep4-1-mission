@@ -23,10 +23,10 @@ public class PayoutCandidateItem extends BaseIdAndTime {
     private LocalDateTime paymentDate;
 
     @ManyToOne(fetch = LAZY)
-    private PayoutMember payer;
+    private PayoutMember payer; // buyer
 
     @ManyToOne(fetch = LAZY)
-    private PayoutMember payee;
+    private PayoutMember payee; // seller
     private long amount;
 
     @OneToOne(fetch = LAZY)

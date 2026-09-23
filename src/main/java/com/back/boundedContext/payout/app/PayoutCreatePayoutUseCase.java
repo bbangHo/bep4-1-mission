@@ -19,7 +19,6 @@ public class PayoutCreatePayoutUseCase {
 
     @Transactional
     public Payout createPayout(PayoutMemberDto payee) {
-        log.info("createPayout: {}", payee.getId());
         PayoutMember _payee = payoutMemberRepository.findById(payee.getId()).get();
         return payoutRepository.save(new Payout(_payee));
     }
